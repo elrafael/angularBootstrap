@@ -1,0 +1,64 @@
+<form [formGroup]="frm" class="row g-3 mt-3" (submit)="submit()">
+  <div class="col-6">
+    <div class="form-floating">
+      <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" formControlName="firstName"
+      [ngClass]="(firstName?.touched || firstName?.dirty) && firstName?.errors ? 'is-invalid' : ''"
+    >
+      <label for="firstName">First name</label>
+      <div class="invalid-feedback">
+        Please inform a first name
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-floating">
+      <input type="text" class="form-control" name="lastName" formControlName="lastName"
+        [ngClass]="(lastName?.touched || lastName?.dirty) && lastName?.errors ? 'is-invalid' : ''"
+      >
+      <label class="form-label">Last name</label>
+      <div class="invalid-feedback">
+        Please inform a last name
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-floating">
+      <input type="text" class="form-control" id="username" placeholder="Username" formControlName="username"
+      [ngClass]="(username?.touched || username?.dirty) && username?.errors ? 'is-invalid' : ''"
+    >
+      <label for="floatingInput">Username</label>
+      <div class="invalid-feedback">
+        Please inform a username
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-floating">
+      <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password"
+      [ngClass]="(password?.touched || password?.dirty) && password?.errors ? 'is-invalid' : ''"
+    >
+      <label for="floatingInput">Password</label>
+      <div class="invalid-feedback">
+        Password is required
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="form-floating">
+      <input type="email" class="form-control" id="email" placeholder="E-mail" formControlName="email"
+      [ngClass]="(email?.touched || email?.dirty) && email?.errors ? 'is-invalid' : ''"
+    >
+      <label for="floatingInput">E-mail</label>
+      <div class="invalid-feedback" *ngIf="email?.errors && email?.errors!['required']">
+        Please inform an e-mail
+      </div>
+      <div class="invalid-feedback" *ngIf="email?.errors && email?.errors!['email']">
+        Invalid e-mail
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary" [disabled]="frm.invalid"><i class="bi bi-check"></i> Save</button>
+  </div>
+</form>
+
